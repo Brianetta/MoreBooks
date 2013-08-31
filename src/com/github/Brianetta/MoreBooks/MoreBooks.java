@@ -5,6 +5,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.BookMeta;
 import org.bukkit.plugin.java.JavaPlugin;
 
 
@@ -46,13 +47,17 @@ public class MoreBooks extends JavaPlugin {
                 if ((stackinhand == null) || (stackinhand.getType() != Material.WRITTEN_BOOK)) {
                     sender.sendMessage("You are not holding a signed book.");
                 } else {
-                    stackinhand.setAmount(64);
-                    sender.sendMessage("Your book has been duplicated.");
+                    BookMeta bookinfo = (BookMeta)stackinhand.getItemMeta();
+                    if (!(bookinfo.getAuthor().equals(player.getName()))) {
+                        sender.sendMessage("You did not sign this book.");
+                    } else {
+                        stackinhand.setAmount(64);
+                        sender.sendMessage("Your book has been duplicated.");
+                    }
                 }
             } else {
                 // Console can't have an item in hand.
                 sender.sendMessage("Player command only, sorry");
-                return false;
             }
             return true;
         }
