@@ -1,0 +1,9 @@
+name: MoreBooks
+main: com.github.Brianetta.MoreBooks.MoreBooks
+version: 0.0.1
+commands:
+    morebooks:
+        description: Duplicate a signed book by creating a full stack
+        usage: /morebooks
+        permission: MoreBooks.morebooks
+        permission-message: You do not have permission to duplicate books this way
