@@ -1,0 +1,4 @@
+MoreBooks
+=========
+
+A Bukkit plugin.
